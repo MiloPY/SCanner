@@ -50,7 +50,7 @@ void cnl_can_rx(cannelloni_handle_t *const handle) {
 
     while(canIsFramePending(can_network)) {
         CAN_frame_t msg;
-        canRecv(&msg, &can1_network, 0);
+        canRecv(&msg, can_network, 0);
 		struct canfd_frame *frame = get_can_rx_frame(handle);
 		if (frame) {
 			frame->can_id = msg.id;
