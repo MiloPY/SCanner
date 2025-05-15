@@ -51,6 +51,9 @@ To set up and run SCanner on your system, follow these steps:
 
 ## Usage
 
+> [!IMPORTANT]
+> The cannelloni server is expected to listen at address 192.168.10.254/24 at port 20000 for CAN 1 and 20001 for CAN 2.
+
 1. **Connect Hardware**:
 
    Ensure the microcontroller is connected to the vehicle's CAN bus.

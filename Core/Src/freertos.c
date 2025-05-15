@@ -200,8 +200,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
   HAL_GPIO_WritePin(nRST_PHY_GPIO_OUT_GPIO_Port, nRST_PHY_GPIO_OUT_Pin, GPIO_PIN_RESET);
 
-  IP4_ADDR(&(cnl1_handle.Init.addr), 192, 168, 10, 255);
-  IP4_ADDR(&(cnl2_handle.Init.addr), 192, 168, 10, 255);
+  IP4_ADDR(&(cnl1_handle.Init.addr), 192, 168, 10, 254);
+  IP4_ADDR(&(cnl2_handle.Init.addr), 192, 168, 10, 254);
 
   HAL_GPIO_WritePin(nRST_PHY_GPIO_OUT_GPIO_Port, nRST_PHY_GPIO_OUT_Pin, GPIO_PIN_SET);
   
