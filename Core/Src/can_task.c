@@ -153,7 +153,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
         }
 
         xQueueSendToBackFromISR(can1_network.rx_queue, &frame, &hptw);
-        sdcardAddMsgFromISR(&frame, CAN_NET1, exCounter, &hptw);
+        // sdcardAddMsgFromISR(&frame, CAN_NET1, exCounter, &hptw);
         portYIELD_FROM_ISR( hptw );
     }
 }
@@ -175,7 +175,7 @@ void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
         }
 
         xQueueSendToBackFromISR(can2_network.rx_queue, &frame, &hptw);
-        sdcardAddMsgFromISR(&frame, CAN_NET2, exCounter, &hptw);
+        // sdcardAddMsgFromISR(&frame, CAN_NET2, exCounter, &hptw);
         portYIELD_FROM_ISR( hptw );
     }
 }

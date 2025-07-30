@@ -208,10 +208,10 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END Init */
   /* Create the mutex(es) */
   /* creation of SDCARD_FILE_LOCK */
-  SDCARD_FILE_LOCKHandle = osMutexNew(&SDCARD_FILE_LOCK_attributes);
+  // SDCARD_FILE_LOCKHandle = osMutexNew(&SDCARD_FILE_LOCK_attributes);
 
   /* creation of SDCARD_DIR_LOCK */
-  SDCARD_DIR_LOCKHandle = osMutexNew(&SDCARD_DIR_LOCK_attributes);
+  // SDCARD_DIR_LOCKHandle = osMutexNew(&SDCARD_DIR_LOCK_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -246,7 +246,7 @@ void MX_FREERTOS_Init(void) {
   cnl2TaskNameHandle = osThreadNew(cannelloniTask, (void*) &cnl2_handle, &cnl2TaskName_attributes);
 
   /* creation of sdcardTaskName */
-  sdcardTaskNameHandle = osThreadNew(sdcardTask, NULL, &sdcardTaskName_attributes);
+  // sdcardTaskNameHandle = osThreadNew(sdcardTask, NULL, &sdcardTaskName_attributes);
 
   /* creation of InitTaskName */
   InitTaskNameHandle = osThreadNew(InitTask, NULL, &InitTaskName_attributes);
@@ -293,14 +293,14 @@ extern char dirname[16];
 void InitTask(void *argument)
 {
   /* USER CODE BEGIN InitTask */
-  sdcard_init();
+  // sdcard_init();
 
   // osDelay(1000);
 
   osEventFlagsWait(System_InitEventHandle, LWIP_Init_Done, osFlagsWaitAny, portMAX_DELAY);
 
-  http_server_init();
-  tftp_if_init();
+  // http_server_init();
+  // tftp_if_init();
 
   canEnable(can1_network.Init.hfdcan, can1_network.Init.ActiveITs);
   canEnable(can2_network.Init.hfdcan, can2_network.Init.ActiveITs);
@@ -315,13 +315,13 @@ void InitTask(void *argument)
       canDisable(can1_network.Init.hfdcan, can1_network.Init.ActiveITs);
       canDisable(can2_network.Init.hfdcan, can2_network.Init.ActiveITs);
       
-      sdcardForceSync();
-      sdcard_deinit();
+      // sdcardForceSync();
+      // sdcard_deinit();
 
       // sprintf(new_dirname, "%s_%lus", dirname, osKernelGetTickCount()/osKernelGetTickFreq());
       // volatile FRESULT res = f_rename(dirname, new_dirname);
 
-      f_mount(NULL, "", 0);
+      // f_mount(NULL, "", 0);
 
       HAL_GPIO_WritePin(SELF_KILL_GPIO_Port, SELF_KILL_Pin, GPIO_PIN_SET); // self-kill
     }
